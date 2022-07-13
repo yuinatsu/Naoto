@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rootNode>
+	<SelectorNode>
+		<SequenceNode>
+			<ConditionNode FuncName="EnemyStateCheckFunc" State="5"/>
+			<ActionNode FuncName="EnemyStateTimeWait" Time="3"/>
+			<ActionNode FuncName="EnemyStateSetFunc" State="6"/>
+		</SequenceNode>
+		<SequenceNode>
+			<ConditionNode FuncName="EnemyStateCheckFunc" State="8"/>
+			<ActionNode FuncName="EnemyStateTimeWait" Time="0.25"/>
+			<ActionNode FuncName="EnemyStateSetFunc" State="0"/>
+		</SequenceNode>
+		<SequenceNode>
+			<ConditionNode FuncName="EnemyStateCheckFunc" State="1"/>
+			<ActionNode FuncName="RotaFunc"/>
+			<ActionNode FuncName="AnimCorrectMoveVecToAnim"/>
+			<ConditionNode FuncName="EnemyCheckAngleFunc"/>
+			<ActionNode FuncName="EnemyStateSetFunc" State="7"/>
+		</SequenceNode>
+		<SequenceNode>
+			<ConditionNode FuncName="EnemyStateCheckFunc" State="0"/>
+			<SelectorNode>
+				<SequenceNode>
+					<ConditionNode FuncName="FanColIsHitFunc"/>
+					<ConditionNode FuncName="IsMoveFunc"/>
+					<ActionNode FuncName="MoveFunc"/>
+					<ActionNode FuncName="AnimCorrectMoveVecToAnim"/>
+				</SequenceNode>
+				<SequenceNode>
+					<ActionNode FuncName="EnemyStateSetFunc" State="7"/>
+				</SequenceNode>
+			</SelectorNode>
+		</SequenceNode>
+		<SequenceNode>
+			<ConditionNode FuncName="EnemyStateCheckFunc" State="2"/>
+			<ActionNode FuncName="PatrolNaviStopFunc"/>
+			<ActionNode FuncName="NaviWaitSearchFunc"/>
+			<SelectorNode>
+				<SequenceNode>
+					<ConditionNode FuncName="NaviStateCheckFindFunc"/>
+					<ActionNode FuncName="NaviMoveFunc"/>
+					<ActionNode FuncName="AnimCorrectMoveVecToAnim"/>
+				</SequenceNode>
+				<SequenceNode>
+					<ConditionNode FuncName="NaviCheckDestFunc"/>
+					<ActionNode FuncName="EnemyStateSetFunc" State="0"/>
+				</SequenceNode>
+			</SelectorNode>
+		</SequenceNode>
+		<SequenceNode>
+			<ConditionNode FuncName="EnemyStateCheckFunc" State="4"/>
+			<ActionNode FuncName="NaviWaitSearchFunc"/>
+			<SelectorNode>
+				<SequenceNode>
+					<ConditionNode FuncName="NaviStateCheckFindFunc"/>
+					<ActionNode FuncName="NaviMoveFunc"/>
+					<ActionNode FuncName="AnimCorrectMoveVecToAnim"/>
+				</SequenceNode>
+				<SequenceNode>
+					<ConditionNode FuncName="NaviCheckDestFunc"/>
+					<ActionNode FuncName="PatrolNaviStartFunc"/>
+					<ActionNode FuncName="EnemyStateSetFunc" State="3"/>
+				</SequenceNode>
+			</SelectorNode>
+		</SequenceNode>
+		<SequenceNode>
+			<ConditionNode FuncName="EnemyStateCheckFunc" State="6"/>
+			<ActionNode FuncName="NaviSetRoutePatrolFunc"/>
+			<ActionNode FuncName="EnemyStateSetFunc" State="4"/>
+			<ActionNode FuncName="PatrolNaviStopFunc"/>
+		</SequenceNode>
+		<SequenceNode>
+			<ConditionNode FuncName="EnemyStateCheckFunc" State="7"/>
+			<SequenceNode>
+				<SelectorNode>
+					<SequenceNode>
+						<ConditionNode FuncName="EnemyIsOverStateTimeFunc" Time="2"/>
+						<ActionNode FuncName="EnemyStateSetFunc" State="6"/>
+					</SequenceNode>
+					<SelectorNode>
+						<SequenceNode>
+							<ConditionNode FuncName="EnemyCheckAngleFunc"/>
+							<ActionNode FuncName="EnemyRandRotaFunc"/>
+						</SequenceNode>
+						<SequenceNode>
+							<ActionNode FuncName="RotaFunc"/>
+							<ActionNode FuncName="AnimCorrectMoveVecToAnim"/>
+						</SequenceNode>
+					</SelectorNode>
+				</SelectorNode>
+			</SequenceNode>
+		</SequenceNode>
+		<SequenceNode>
+			<ConditionNode FuncName="PatrolCheckNotIsStop"/>
+			<ActionNode FuncName="PatrolMoveFunc"/>
+			<ActionNode FuncName="AnimCorrectMoveVecToAnim"/>
+		</SequenceNode>
+	</SelectorNode>
+</rootNode>
